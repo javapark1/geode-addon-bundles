@@ -1,0 +1,1 @@
+The `mysql` bundle is preconfigured to synchronize Geode/GemFire with MySQL running on localhost. It includes the `mysql` cluster and `perf_test_mysql` app to quickly start up a Gedoe/GemFire cluster and run the client app to write/read to/from Geode/GemFire and MySQL.
