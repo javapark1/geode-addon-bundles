@@ -5,13 +5,13 @@ This bundle contains a Microsoft Power BI example that interfaces Power BI with 
 This article can be viewed in your browser by running the following:
 
 ```console
-show_bundle bundle-geode-1.11.0-cluster-app-powerbi-perf_test-powerbi.tar.gz
+show_bundle bundle-geode-1.11.0-cluster-app-powerbi-perf_test_powerbi.tar.gz
 ```
 
 ## Installing Bundle
 
 ```console
-install_bundle -download bundle-geode-1.11.0-cluster-app-powerbi-perf_test-powerbi.tar.gz
+install_bundle -download bundle-geode-1.11.0-cluster-app-powerbi-perf_test_powerbi.tar.gz
 ```
 
 ## Running Cluster
