@@ -1,0 +1,1 @@
+The `powerbi` bundle includes a cluster, perf_test, and Power BI files for interfacing Power BI Desktop with Geode/GemFire. It uses the Geode/GemFire REST API and the `geode-addon`'s `QueryFunction` to join colocated data.
