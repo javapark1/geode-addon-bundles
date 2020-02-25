@@ -30,7 +30,7 @@ The bundle includes the `perf_test_powerbi` app that included the preconfigured 
 Run the `test_group` command to ingest the data as follows:
 
 ```console
-cd_app perf_test_power_bi; cd bin_sh
+cd_app perf_test_powerbi; cd bin_sh
 ./test_group -prop ../etc/group-factory.properties -run
 ```
 
@@ -44,7 +44,7 @@ The above command ingests small sets of data as follows.
 You can increase the number of entries in the `etc/group-factory.properties` file by changing group properties.
 
 ```console
-cd_app perf_test_power_bi
+cd_app perf_test_powerbi
 vi etc/group-factory.properties
 ```
 
