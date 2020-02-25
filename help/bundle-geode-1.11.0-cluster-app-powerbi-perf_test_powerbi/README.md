@@ -5,13 +5,13 @@ This bundle contains a Microsoft Power BI example that interfaces Power BI with 
 This article can be viewed in your browser by running the following:
 
 ```console
-show_bundle bundle-geode-1.11.0-cluster-app-powerbi-perf_test-powerbi.tar.gz
+show_bundle bundle-geode-1.11.0-cluster-app-powerbi-perf_test_powerbi.tar.gz
 ```
 
 ## Installing Bundle
 
 ```console
-install_bundle -download bundle-geode-1.11.0-cluster-app-powerbi-perf_test-powerbi.tar.gz
+install_bundle -download bundle-geode-1.11.0-cluster-app-powerbi-perf_test_powerbi.tar.gz
 ```
 
 ## Running Cluster
@@ -30,7 +30,7 @@ The bundle includes the `perf_test_powerbi` app that included the preconfigured 
 Run the `test_group` command to ingest the data as follows:
 
 ```console
-cd_app perf_test_power_bi; cd bin_sh
+cd_app perf_test_powerbi; cd bin_sh
 ./test_group -prop ../etc/group-factory.properties -run
 ```
 
@@ -41,10 +41,10 @@ The above command ingests small sets of data as follows.
 | /nw/customers | 100   |
 | /nw/orders    | 1000  |
 
-You can increase the number of entries in the `etc/group-factory.properties` file by changing group properties.
+You can increase the number of entries in the `etc/group-factory.properties` file by changing the group properties.
 
 ```console
-cd_app perf_test_power_bi
+cd_app perf_test_powerbi
 vi etc/group-factory.properties
 ```
 
@@ -84,8 +84,7 @@ This Power BI file interfaces Geode/GemFire using the function, `QueryFunction` 
 select * from /nw/customers c, /nw/orders o where c.customerId=o.customerId
 ```
 
-To join Geode/GemFire regions, the regions must be colocated. The `powerbi` cluster has been preconfigured to colocate `/nw/customers` and `/nw/orders` regions using the generic partition resolver, `IdentityKeyPartitionResolver`, provided by `geode-addon`. To properly use `IdentityKeyPartitionResolver`, the entry key a composite string that contains the routing key separted by the default delimiter '.'. For our example, the routing key is the second token of the entry key string. For example, the order entry key, `k0000000920.000000-0055` contains the customer ID, `000000-0055` as the routing key.
-
+To join Geode/GemFire regions, the regions must be colocated. The `powerbi` cluster has been preconfigured to colocate `/nw/customers` and `/nw/orders` regions using the generic partition resolver, `IdentityKeyPartitionResolver`, provided by `geode-addon`. To properly use `IdentityKeyPartitionResolver`, the entry key must be a composite string that contains the routing key separated by the default delimiter '.'. For the `powerbin` cluster, the routing key is the second token of the entry key string. For example, the order entry key, `k0000000920.000000-0055` contains the customer ID, `000000-0055` as the routing key.
 
 ### nw.pbix
 
@@ -100,7 +99,9 @@ The results of the queries are then merged into one (1) table using Power Query 
 
 ## Power BI Desktop
 
-After loading the pbix files, click on the Home/Refresh icon in the tool bar. Since the query results for both pbix files are same, they should show the exact same *Freight Costs by Date* pie charts and *Customer by State* maps as shown below.
+After loading the `.pbix` files, click on the Home/Refresh icon in the tool bar. Since the query results for both `.pbix` files are same, they should show the exact same *Freight Costs by Date* pie charts and *Customer by State* maps as shown below.
+
+![Power BI Screenshot](PowerBI.png)
 
 ## Tearing Down
 
@@ -111,5 +112,3 @@ stop_cluster -all
 ## Conclusion
 
 Integrating Power BI with Geode/GemFire is a trivial task using the Geode/GemFire REST API. For simple queries and small result sets, the REST API provides you a quick and simple way to retrieve data in real time. However, the lack of OQL support for non-colocated data and the poor support for streaming large result sets greatly hamper its usability. The Geode/GemFire query service is not for those who need to execute complex queries and expect large result sets. For that, a separate data extraction service is needed. Stay tuned...
-
-![Power BI Screenshot](PowerBI.png)
