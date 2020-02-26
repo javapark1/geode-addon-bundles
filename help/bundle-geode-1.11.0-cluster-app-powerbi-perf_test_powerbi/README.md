@@ -99,6 +99,14 @@ select * from /nw/customers c, /nw/orders o where c.customerId=o.customerId
 
 To join Geode/GemFire regions, the regions must be colocated. The `powerbi` cluster has been preconfigured to colocate `/nw/customers` and `/nw/orders` regions using the generic partition resolver, `IdentityKeyPartitionResolver`, provided by `geode-addon`. To properly use `IdentityKeyPartitionResolver`, the entry key must be a composite string that contains the routing key separated by the default delimiter '.'. For the `powerbin` cluster, the routing key is the second token of the entry key string. For example, the order entry key, `k0000000920.000000-0055` contains the customer ID, `000000-0055` as the routing key.
 
+**CURL:**
+
+```console
+curl -X POST "http://localhost:7080/geode/v1/functions/addon.QueryFunction?onRegion=%2Fnw%2Forders" \
+     -H "accept: application/json" -H "Content-Type: application/json" \
+     -d "[ { \"@type\": \"String\",\"@value\": \"select * from /nw/customers c, /nw/orders o where c.customerId=o.customerId limit 100\"}]"
+```
+
 ### nw.pbix
 
 This Power BI file interfaces Geode/GemFire using two separate queries as follows.
@@ -109,6 +117,18 @@ select * from /nw/orders
 ```
 
 The results of the queries are then merged into one (1) table using Power Query M.
+
+**CURL:**
+
+```console
+# customers
+curl -X GET "http://localhost:7080/geode/v1/queries/adhoc?q=select%20*%20from%20%2Fnw%2Fcustomers%20limit%20100" 
+     -H "accept: application/json;charset=UTF-8"
+
+# orders
+curl -X GET "http://localhost:7080/geode/v1/queries/adhoc?q=select%20*%20from%20%2Fnw%2Forders%20limit%20100" \
+     -H "accept: application/json;charset=UTF-8"
+```
 
 ## Power BI Desktop
 
