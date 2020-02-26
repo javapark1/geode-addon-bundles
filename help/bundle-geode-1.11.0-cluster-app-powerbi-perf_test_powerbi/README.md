@@ -19,7 +19,15 @@ install_bundle -download bundle-geode-1.11.0-cluster-app-powerbi-perf_test_power
 The bundle installs the `powerbi` cluster which can be started as follows:
 
 ```console
+# Switch into the powerbi cluster
 switch_cluster powerbi
+
+# Add a locator and two (2) members to the cluster
+add_locator
+add_member
+add_member
+
+# Start the cluster
 start_cluster
 ```
 
@@ -31,6 +39,11 @@ Run the `test_group` command to ingest the data as follows:
 
 ```console
 cd_app perf_test_powerbi; cd bin_sh
+
+# First, built the app
+./build_app
+
+# Run test_group to ingest mock data into /nw/customers and /nw/orders
 ./test_group -prop ../etc/group-factory.properties -run
 ```
 
@@ -99,9 +112,13 @@ The results of the queries are then merged into one (1) table using Power Query 
 
 ## Power BI Desktop
 
-After loading the `.pbix` files, click on the Home/Refresh icon in the tool bar. Since the query results for both `.pbix` files are same, they should show the exact same *Freight Costs by Date* pie charts and *Customer by State* maps as shown below.
+After loading the `.pbix` files, click on the Home/Refresh icon in the tool bar. Since the query results for both `.pbix` files are same, they should show the exact same *Freight Costs by Date* pie charts and *Customers by State* maps as shown below.
 
-![Power BI Screenshot](PowerBI.png)
+### Freight Costs by Date
+![Power BI Pie Chart](pbi-pie.png)
+
+### Customers by State
+![Power BI Map](pbi-map.png)
 
 ## Tearing Down
 
