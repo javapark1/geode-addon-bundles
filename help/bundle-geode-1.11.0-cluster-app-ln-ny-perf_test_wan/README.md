@@ -2,7 +2,7 @@
 
 The `wan` bundle includes two (2) local clusters configured with bi-directional WAN gateways. You can test the bundle immediately after installation. No configurations required.
 
-To understand how the clusters are configured, please the following the WAN example article. It provides step-by-step instructions for creating and running WAN enabled clusters from scratch.
+To understand how the clusters are configured, please see the following WAN example. It provides step-by-step instructions for creating and running WAN enabled clusters from scratch.
 
 [https://github.com/javapark1/geode-addon/blob/master/doc/WAN-Example.md](https://github.com/javapark1/geode-addon/blob/master/doc/WAN-Example.md)
 
