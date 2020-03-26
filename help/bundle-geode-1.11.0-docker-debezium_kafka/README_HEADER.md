@@ -1,0 +1,1 @@
+This bundle integrates Geode/GemFire with Debezium for ingesting initial data and CDC records from MySQL into a Geode/GemFire cluster via a Kafka sink connector included in the `geode-addon` distribution. It supports inserts, updates and deletes.
