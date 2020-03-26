@@ -34,7 +34,7 @@ All the commands provided in the tutorial are wrapped in the scripts found in th
 
 ## Building Demo
 
-We must first build the demo by running the `build_app` command as shown below. This command compiles and packages the `VersionedPortable` data (domain) classes found in the source directory `src`. It also copies the Geode/GemFire and `geode-addon` jar files to the Docker container mounted volume in the `geode-addon` directory so that the Geode/GemFire Debezium Kafka connector can include them in its class path.
+We must first build the demo by running the `build_app` command as shown below. This command compiles and packages the `PdxSerializable` data (domain) classes found in the source directory `src`. It also copies the Geode/GemFire and `geode-addon` jar files to the Docker container mounted volume in the `geode-addon` directory so that the Geode/GemFire Debezium Kafka connector can include them in its class path.
 
 ```console
 cd_docker debezium_kafka; cd bin_sh
@@ -198,7 +198,7 @@ INSERT INTO customers VALUES (default, "Kenneth", "Anderson", "kander@acme.com")
 
 ### View Region Contents
 
-To view the map contents, run the `read_cache` command as follows:
+To view the region contents, run the `read_cache` command as follows:
 
 ```console
 ./read_cache /inventory/customers
