@@ -8,6 +8,12 @@ To use this repo, you must first install `geode-addon`:
 
 [https://github.com/javapark1/geode-addon](https://github.com/javapark1/geode-addon)
 
+## Bundle Catalog - Use Cases
+
+The following link provides a compiled list of bundle use cases.
+
+**[Go To Bundle Catalog](Bundle-Catalog.md)**
+
 ## Bundle Naming Conventions
 
 A bundle may contain configuration files pertaining to cluster, app or both. 
