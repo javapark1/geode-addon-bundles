@@ -77,7 +77,7 @@ The version number in the bundle name indicates that the bundle has been created
 
 ## Installing Bundles
 
-To install bundles, run the `install_bundle` command included in `hazelcast-addon`. Before installing a bundle, make sure you are in the workspace configured with the compatible IMDG or Jet version. Always execute the `switch_workspace` command first to enter the workspace of your choice before installing a bundle.
+To install bundles, run the `install_bundle` command included in `geode-addon`. Before installing a bundle, make sure you are in the workspace configured with the compatible Geode or GemFire version. Always execute the `switch_workspace` command first to enter the workspace of your choice before installing a bundle.
 
 ### Listing Remote Bundles
 
