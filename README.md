@@ -12,7 +12,7 @@ To use this repo, you must first install `geode-addon`:
 
 The following link provides a compiled list of bundle use cases.
 
-**[Go To Bundle Catalog](Bundle-Catalog.md)**
+:books: **[Go To Bundle Catalog](Bundle-Catalog.md)**
 
 ## Bundle Naming Conventions
 
