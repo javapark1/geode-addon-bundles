@@ -14,6 +14,13 @@ show_bundle bundle-geode-1.11.0-cluster-app-powerbi-perf_test_powerbi.tar.gz
 install_bundle -download bundle-geode-1.11.0-cluster-app-powerbi-perf_test_powerbi.tar.gz
 ```
 
+## Use Case
+
+In this use case, we integrate Microsoft Power BI with Geode/GemFire using the REST API to invoke the `QueryFunction` plugin included in the `geode-addon` distribution. We join co-located regions in our queries via the `QueryFunction` plugin and perform visual analytics from Power BI.
+
+![Power BI Data Flow Diagram](/images/powerbi.png)
+
+
 ## Running Cluster
 
 The bundle installs the `powerbi` cluster which can be started as follows:
@@ -148,4 +155,4 @@ stop_cluster -all
 
 ## Conclusion
 
-Integrating Power BI with Geode/GemFire is a trivial task using the Geode/GemFire REST API. For simple queries and small result sets, the REST API provides a quick and simple way to retrieve data in real time. However, the lack of OQL support for non-colocated data and the poor support for streaming large result sets greatly hamper its usability. The Geode/GemFire query service is not for those who need to execute complex queries and expect large result sets. For that, a separate data extraction service is needed. Stay tuned...
+Integrating Power BI with Geode/GemFire is a trivial task using the Geode/GemFire REST API. For simple queries and small result sets, the REST API provides a quick and simple way to retrieve data in real time. However, the lack of OQL support for non-colocated data and the poor support for streaming large result sets greatly hamper its usability. The Geode/GemFire query service is not for executing complex queries and for returning large result sets. For that, a separate data extraction service is needed.
