@@ -50,8 +50,10 @@ tree geode-addon
 
 ```console
 geode-addon/
-├── etc
-│   └── client-cache.xml
+│   ├── etc
+│   │   ├── cache.xml
+│   │   ├── client-cache.xml
+│   │   └── client-gemfire.properties
 ├── lib
 │   ├── ...
 │   ├── geode-addon-core-0.9.0-SNAPSHOT.jar
@@ -105,16 +107,23 @@ Replace `host.docker.internal` in `geode-client.xml` with your host IP address.
 
 ### Configuring Geode/GemFire Cluster
 
-Copy the demo data jar file into the `plugins` directory as follows.
+Copy the `cache.xml` and demo data jar files from the `debezium_kafaka` directory as follows.
 
 ```console
 cd_docker geode
+
+# Copy cache.xml
+cp $GEODE_ADDON_WORKSPACE/docker/debezium_kafka/geode-addon/etc/cache.xml geode-addon/etc/
+
+# Copy debezium-demo-data-1.0-SNAPSHOT.jar
 cp $GEODE_ADDON_WORKSPACE/docker/debezium_kafka/geode-addon/plugins/debezium-demo-data-1.0-SNAPSHOT.jar geode-addon/plugins/
 ```
 
+The `cache.xml` file defines the `inventory` regions that we will need for our demo and the`debezium-demo-data-1.0-SNAPSHOT.jar` file is needed for query services.
+
 ## Starting Docker Containers
 
-There are numerous Docker containers to this demo. We'll first start the Geode/GemFire cluster containers and then proceed with the Debezium containers. For this demo, we intentionally made each container to run in the foreground so that you can view the log events. You will need to launch a total of eight (8) terminals. 
+There are numerous Docker containers to this demo. We'll first start the Geode/GemFire cluster containers and then proceed with the Debezium containers. For this demo, we intentionally made each container to run in the foreground so that you can view the log events. You will need to launch a total of eight (8) terminals.
 
 ### Start Geode/GemFire Containers
 
@@ -207,11 +216,41 @@ To view the map contents, run the `read_cache` command as follows:
 **Output:**
 
 ```console
-Map Values [/inventory/customers]:
+Region Values [/inventory/customers]:
+        [email=annek@noanswer.org, firstName=Anne Marie, id=1004, lastName=Kretchmar]
         [email=gbailey@foobar.com, firstName=George, id=1002, lastName=Bailey]
         [email=sally.thomas@acme.com, firstName=Sally, id=1001, lastName=Thomas]
         [email=ed@walker.com, firstName=Edward, id=1003, lastName=Walker]
-        [email=annek@noanswer.org, firstName=Anne Marie, id=1004, lastName=Kretchmar]
+```
+
+### Browse Region Contents using `gfsh`
+
+You can also use `gfsh` to browse region contents.
+
+```console
+docker container exec -it geode_locator_1 gfsh
+```
+
+Connect to the `geode` cluster and execute the query as shown below.
+
+```console
+gfsh>connect --locator=localhost[10334]
+gfsh>query --query="select * from /inventory/customers order by id"
+```
+
+**Output:**
+
+```console
+Result : true
+Limit  : 100
+Rows   : 4
+
+ id  |  firstName   |  lastName   | email
+---- | ------------ | ----------- | -----------------------
+1001 | "Sally"      | "Thomas"    | "sally.thomas@acme.com"
+1002 | "George"     | "Bailey"    | "gbailey@foobar.com"
+1003 | "Edward"     | "Walker"    | "ed@walker.com"
+1004 | "Anne Marie" | "Kretchmar" | "annek@noanswer.org"
 ```
 
 ### Browse Region Contents from Pulse
