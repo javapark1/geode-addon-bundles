@@ -97,7 +97,7 @@ This Power BI file interfaces Geode/GemFire using the function, `QueryFunction` 
 select * from /nw/customers c, /nw/orders o where c.customerId=o.customerId
 ```
 
-To join Geode/GemFire regions, the regions must be colocated. The `powerbi` cluster has been preconfigured to colocate `/nw/customers` and `/nw/orders` regions using the generic partition resolver, `IdentityKeyPartitionResolver`, provided by `geode-addon`. To properly use `IdentityKeyPartitionResolver`, the entry key must be a composite string that contains the routing key separated by the default delimiter '.'. For the `powerbin` cluster, the routing key is the second token of the entry key string. For example, the order entry key, `k0000000920.000000-0055` contains the customer ID, `000000-0055` as the routing key.
+To join Geode/GemFire regions, the regions must be colocated. The `powerbi` cluster has been preconfigured to colocate `/nw/customers` and `/nw/orders` regions using the generic partition resolver, `IdentityKeyPartitionResolver`, provided by `geode-addon`. To properly use `IdentityKeyPartitionResolver`, the entry key must be a composite string that contains the routing key separated by the default delimiter '.'. For the `powerbi` cluster, the routing key is the second token of the entry key string. For example, the order entry key, `k0000000920.000000-0055` contains the customer ID, `000000-0055` as the routing key.
 
 **CURL:**
 
