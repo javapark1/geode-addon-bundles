@@ -85,10 +85,18 @@ The bundles in this repo can be listed using the `install_bundle` command. Simpl
 
 ```console
 # List remote bundles
-install_bundle
+show_bundle
 ```
 
-### Downloading Bundle
+### Viewing Bundle Help
+
+Each bundle comes with detailed descriptions and instructions which can be viewed in the browser.
+
+```console
+show_bundle bundle-geode-1.11.0-cluster-app-mysql-perf_test_mysql.tar.gz
+```
+
+### Installing Bundle
 
 To install remote bundles hosted by this repo, specify the `-download` option.
 
@@ -115,7 +123,7 @@ The example below shows typical bundle installation steps. Each bundle includes 
 switch_workspace myws
 
 # Download and install bundle in the myws workspace
-install_bundle -download -preview bundle-geode-1.11.0-cluster-app-mysql-perf_test_mysql.tar.gz
+install_bundle -download bundle-geode-1.11.0-cluster-app-mysql-perf_test_mysql.tar.gz
 
 # Switch cluster to the 'mysql' cluster you just installed.
 switch_cluster mysql
