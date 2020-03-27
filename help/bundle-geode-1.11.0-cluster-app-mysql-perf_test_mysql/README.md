@@ -8,6 +8,12 @@ The `mysql` bundle is preconfigured to synchronize Geode/GemFire with MySQL runn
 install_bundle -download bundle-geode-1.11.0-cluster-app-mysql-perf_test_mysql.tar.gz
 ```
 
+## Use Case
+
+In this use case, we synchronize the select Geode/GemFire regions with the MySQL database tables. The `CacheWriterLoaderPkDbImpl` plugin synchronizes the database tables with all region read and write operations, i.e., `get`, `getAll`, `put`, `putAll`, `destroy`, and `remove`.
+
+![DB Sync Diagram](/images/db-sync.png)
+
 ## Configuring MySQL
 
 The 'mysql' cluster has been preconfigured to connect to MySQL on localhost with the user name `root` and the password `MySql123`. Change the user name/password in `etc/hibernate.cfg-mysql.xml`.
