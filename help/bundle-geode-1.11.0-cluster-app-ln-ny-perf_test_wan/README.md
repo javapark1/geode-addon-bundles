@@ -12,6 +12,12 @@ To understand how the clusters are configured, please see the following WAN exam
 install_bundle -download bundle-geode-1.11.0-cluster-app-ln-ny-perf_test_wan.tar.gz
 ```
 
+## Use Case
+
+In this use case, two (2) local clusters are configured to replicate select  Geode/GemFire regions across the WAN. With the included `perf_test_wan` app you can ingest data into the `ny` cluster and monitor the WAN replication taking place into the `ln` cluster using Geode/GemFire Pulse in the browser.
+
+![WAN Diagram](/images/wan-ny-ln.png)
+
 ## Running Clusters
 
 Add a locator and two members to both clusters.
