@@ -34,7 +34,7 @@ All the commands provided in the tutorial are wrapped in the scripts found in th
 
 ## Building Demo
 
-We must first build the demo by running the `build_app` command as shown below. This command compiles and packages the `PdxSerializable` data (domain) classes found in the source directory `src`. It also copies the Geode/GemFire and `geode-addon` jar files to the Docker container mounted volume in the `geode-addon` directory so that the Geode/GemFire Debezium Kafka connector can include them in its class path.
+We must first build the demo by running the `build_app` command as shown below. This command compiles and packages the `VersionedPortable` data (domain) classes found in the source directory `src`. It also copies the Geode/GemFire and `geode-addon` jar files to the Docker container mounted volume in the `geode-addon` directory so that the Geode/GemFire Debezium Kafka connector can include them in its class path.
 
 ```console
 cd_docker debezium_kafka; cd bin_sh
@@ -123,7 +123,10 @@ The `cache.xml` file defines the `inventory` regions that we will need for our d
 
 ## Starting Docker Containers
 
-There are numerous Docker containers to this demo. We'll first start the Geode/GemFire cluster containers and then proceed with the Debezium containers. For this demo, we intentionally made each container to run in the foreground so that you can view the log events. You will need to launch a total of eight (8) terminals.
+There are numerous Docker containers to this demo. We'll first start the Geode/GemFire cluster containers and then proceed with the Debezium containers. For this demo, we intentionally made each container to run in the foreground so that you can view the log events. You will need to launch a total of eight (8) terminals. If you have a screen splitter such as Windows Terminal, it will make things easier.
+
+![WSL Terminal Screenshot](/images/wsl-terminal-inventory.png)
+
 
 ### Start Geode/GemFire Containers
 
@@ -207,7 +210,7 @@ INSERT INTO customers VALUES (default, "Kenneth", "Anderson", "kander@acme.com")
 
 ### View Region Contents
 
-To view the region contents, run the `read_cache` command as follows:
+To view the map contents, run the `read_cache` command as follows:
 
 ```console
 ./read_cache /inventory/customers
